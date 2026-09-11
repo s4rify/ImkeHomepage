@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tagesmutter Imke</title>
+<meta name="description" content="Liebevolle Tagespflege in Uninähe: Singen, vegetarisches Essen und wöchentliche Ausflüge auf den Wochenmarkt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* -------------------- Tokens -------------------- */
+  :root{
+    --bg:#FBF3E7;
+    --bg-alt:#F3E6D3;
+    --ink:#3A2E28;
+    --ink-soft:#6B5B4F;
+    --terracotta:#C1613D;
+    --terracotta-deep:#A54B2C;
+    --sage:#6F8F6B;
+    --sage-soft:#DCE6D6;
+    --mustard:#D9A441;
+    --sky:#7FA8C9;
+    --blush:#D98A9E;
+    --lavender:#A695C7;
+    --card:#FFFDF9;
+    --line: rgba(58,46,40,0.12);
+    --shadow: 0 14px 30px -20px rgba(58,46,40,0.22);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211914;
+      --bg-alt:#2B211A;
+      --ink:#F3E6D3;
+      --ink-soft:#C9B8A8;
+      --terracotta:#E2865C;
+      --terracotta-deep:#F0A379;
+      --sage:#93B48D;
+      --sage-soft:#33402F;
+      --mustard:#E8B85B;
+      --sky:#8FBBDE;
+      --blush:#E6A0B2;
+      --lavender:#BBA8DE;
+      --card:#2C2119;
+      --line: rgba(243,230,211,0.16);
+      --shadow: 0 18px 40px -24px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211914;
+    --bg-alt:#2B211A;
+    --ink:#F3E6D3;
+    --ink-soft:#C9B8A8;
+    --terracotta:#E2865C;
+    --terracotta-deep:#F0A379;
+    --sage:#93B48D;
+    --sage-soft:#33402F;
+    --mustard:#E8B85B;
+    --sky:#8FBBDE;
+    --blush:#E6A0B2;
+    --lavender:#BBA8DE;
+    --card:#2C2119;
+    --line: rgba(243,230,211,0.16);
+    --shadow: 0 18px 40px -24px rgba(0,0,0,0.6);
+  }
+
+  /* -------------------- Base -------------------- */
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Karla', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:500;
+    line-height:1.12;
+    margin:0;
+    text-wrap:balance;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-size:0.75rem;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+  }
+  section{padding:88px 0;}
+  @media (max-width:720px){ section{padding:60px 0;} }
+
+  /* -------------------- Nav -------------------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    font-size:1.3rem; text-decoration:none; color:var(--ink);
+  }
+  .logo svg{width:30px;height:30px;flex-shrink:0;}
+  nav ul{
+    list-style:none; display:flex; gap:28px; margin:0; padding:0;
+    font-weight:600; font-size:0.95rem;
+  }
+  nav ul a{text-decoration:none; opacity:0.82; transition:opacity .15s;}
+  nav ul a:hover{opacity:1;}
+  .nav-actions{display:flex; align-items:center; gap:18px;}
+  .nav-links-desktop{display:flex;}
+  .menu-btn{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px;}
+  @media (max-width:860px){
+    .nav-links-desktop{display:none;}
+    .menu-btn{display:block;}
+  }
+  .theme-toggle{
+    display:flex; align-items:center; justify-content:center;
+    width:38px; height:38px; border-radius:50%;
+    border:1.5px solid var(--line); background:var(--card); color:var(--ink);
+    cursor:pointer; flex-shrink:0; transition:border-color .15s ease;
+  }
+  .theme-toggle:hover{border-color:var(--terracotta);}
+  .theme-toggle svg{width:19px;height:19px;}
+  #mobile-menu{
+    display:none; flex-direction:column; gap:4px; padding:8px 24px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  #mobile-menu.open{display:flex;}
+  #mobile-menu a{
+    text-decoration:none;color:var(--ink);font-weight:600;
+    padding:10px 0; border-bottom:1px solid var(--line);
+  }
+  #mobile-menu a:last-child{border-bottom:none;}
+
+  /* -------------------- Buttons -------------------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; border-radius:999px;
+    font-weight:700; font-size:0.95rem; text-decoration:none;
+    border:1.5px solid transparent; cursor:pointer;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--terracotta); color:#FFFDF9;}
+  .btn-primary:hover{background:var(--terracotta-deep);}
+  .btn-ghost{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .btn-ghost:hover{background:var(--ink); color:var(--bg);}
+
+  /* -------------------- Bunting -------------------- */
+  .bunting-wrap{width:100%; overflow:hidden; line-height:0;}
+  .bunting{width:100%; height:52px; display:block;}
+
+  /* -------------------- Hero -------------------- */
+  .hero{padding:8px 0 40px;}
+  .hero .wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr; gap:44px;} }
+  .badge-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--sage-soft); color:var(--sage);
+    border-radius:999px; padding:8px 16px 8px 10px;
+    font-weight:700; font-size:0.85rem; margin-bottom:22px;
+  }
+  .badge-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--sage);}
+  .hero h1{
+    font-size:clamp(2.5rem, 4.6vw, 3.6rem);
+    font-style:italic;
+    margin-bottom:20px;
+  }
+  .hero h1 em{color:var(--terracotta); font-style:italic;}
+  .hero p.lead{
+    font-size:1.1rem; color:var(--ink-soft); max-width:46ch; margin-bottom:32px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  .hero-art{position:relative;}
+  .portrait-frame{
+    position:relative; width:100%; aspect-ratio:1/1; max-width:400px; margin:0 auto;
+  }
+  .portrait-ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:2px dashed var(--line);
+  }
+  .portrait-circle{
+    position:absolute; inset:18px; border-radius:50%; overflow:hidden;
+    background:var(--mustard); box-shadow:var(--shadow);
+  }
+  .stamp{
+    position:absolute; width:74px; height:74px; border-radius:50%;
+    background:var(--card); border:1.5px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow); color:var(--terracotta);
+  }
+  .stamp svg{width:32px;height:32px;}
+  .stamp.s1{top:-6px; right:6%;}
+  .stamp.s2{bottom:6%; left:-14px; color:var(--sage);}
+  .stamp.s3{bottom:-10px; right:14%; color:var(--mustard);}
+  .placeholder-note{
+    text-align:center; font-size:0.78rem; color:var(--ink-soft);
+    margin-top:18px; font-style:italic;
+  }
+
+  /* -------------------- Wave divider -------------------- */
+  .wave{display:block; width:100%; height:34px; color:var(--bg-alt);}
+
+  /* -------------------- Ueber mich -------------------- */
+  .ueber{background:var(--bg-alt);}
+  .ueber .wrap{
+    display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .ueber .wrap{grid-template-columns:1fr;} }
+  .avatar-big{
+    width:100%; max-width:320px; aspect-ratio:0.9/1; border-radius:28px;
+    background:var(--mustard); box-shadow:var(--shadow); overflow:hidden; margin:0 auto;
+  }
+  blockquote{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:1.5rem; color:var(--terracotta); margin:0 0 22px; line-height:1.3;
+  }
+  .ueber p{max-width:56ch; color:var(--ink-soft);}
+  .facts{
+    display:flex; gap:22px; flex-wrap:wrap; margin-top:26px; padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  .fact{min-width:110px;}
+  .fact .num{
+    font-family:'Fraunces', serif; font-size:1.7rem; color:var(--ink); display:block;
+    font-variant-numeric:tabular-nums;
+  }
+  .fact .label{font-size:0.8rem; color:var(--ink-soft);}
+
+  /* -------------------- Angebot -------------------- */
+  .angebot-head{max-width:56ch; margin-bottom:48px;}
+  .angebot-head h2{font-size:clamp(1.9rem,3vw,2.5rem); font-style:italic; margin-top:10px;}
+  .cards{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  @media (max-width:900px){ .cards{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .cards{grid-template-columns:1fr;} }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:28px 22px; box-shadow:var(--shadow);
+  }
+  .card .icon{
+    width:52px; height:52px; border-radius:50%; background:var(--sage-soft); color:var(--sage);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
+  .card:nth-child(2) .icon{background:color-mix(in srgb, var(--terracotta) 18%, transparent); color:var(--terracotta);}
+  .card:nth-child(3) .icon{background:color-mix(in srgb, var(--mustard) 22%, transparent); color:var(--mustard);}
+  .card:nth-child(4) .icon{background:color-mix(in srgb, var(--sky) 22%, transparent); color:var(--sky);}
+  .card .icon svg{width:26px;height:26px;}
+  .card h3{font-size:1.1rem; font-style:italic; margin-bottom:8px;}
+  .card p{font-size:0.92rem; color:var(--ink-soft); margin:0;}
+
+  /* -------------------- Tagesablauf -------------------- */
+  .tag{background:var(--bg-alt);}
+  .tag-head{max-width:56ch; margin-bottom:44px;}
+  .tag-head h2{font-size:clamp(1.9rem,3vw,2.5rem); font-style:italic; margin-top:10px;}
+  .timeline{
+    display:flex; flex-direction:column; border-top:1px solid var(--line);
+  }
+  .t-row{
+    display:grid; grid-template-columns:100px 1fr; gap:24px;
+    padding:20px 0; border-bottom:1px solid var(--line);
+  }
+  .t-row .time{
+    font-family:'Fraunces', serif; font-size:1.05rem; color:var(--terracotta);
+    font-variant-numeric:tabular-nums;
+  }
+  .t-row .what strong{display:block; margin-bottom:2px;}
+  .t-row .what span{color:var(--ink-soft); font-size:0.92rem;}
+
+  /* -------------------- Kontakt -------------------- */
+  .kontakt{
+    background:linear-gradient(135deg, color-mix(in srgb, var(--sky) 16%, var(--bg)), color-mix(in srgb, var(--blush) 16%, var(--bg)));
+    color:var(--ink);
+  }
+  .kontakt .eyebrow{color:var(--terracotta);}
+  .kontakt h2{
+    color:var(--ink); font-size:clamp(2rem,3.4vw,2.7rem); font-style:italic;
+    margin:10px 0 18px; max-width:18ch;
+  }
+  .kontakt p.lead{color:var(--ink-soft); max-width:50ch; margin-bottom:36px;}
+  .kontakt-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;
+  }
+  @media (max-width:800px){ .kontakt-grid{grid-template-columns:1fr;} }
+  .kdetails{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .kdetails li{display:flex; gap:14px; align-items:flex-start;}
+  .kdetails svg{width:22px;height:22px; color:var(--terracotta); flex-shrink:0; margin-top:2px;}
+  .kdetails .k-label{font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft);}
+  .kdetails .k-value{font-weight:600;}
+  .kontakt .btn-primary{background:var(--terracotta); color:#FFFDF9;}
+  .kontakt .btn-primary:hover{background:var(--terracotta-deep);}
+  .kontakt .btn-ghost{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .kontakt .btn-ghost:hover{background:var(--ink); color:var(--bg);}
+
+  /* -------------------- Footer -------------------- */
+  footer{padding:32px 0; background:var(--bg-alt);}
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    font-size:0.85rem; color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#home" class="logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="6" fill="var(--mustard)"/>
+        <g stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round">
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="16" y1="26" x2="16" y2="30"/>
+          <line x1="2" y1="16" x2="6" y2="16"/>
+          <line x1="26" y1="16" x2="30" y2="16"/>
+          <line x1="6.5" y1="6.5" x2="9.2" y2="9.2"/>
+          <line x1="22.8" y1="22.8" x2="25.5" y2="25.5"/>
+          <line x1="25.5" y1="6.5" x2="22.8" y2="9.2"/>
+          <line x1="9.2" y1="22.8" x2="6.5" y2="25.5"/>
+        </g>
+      </svg>
+      Tagesmutter Imke
+    </a>
+    <nav class="nav-links-desktop">
+      <ul>
+        <li><a href="#ueber-mich">Über mich</a></li>
+        <li><a href="#angebot">Angebot</a></li>
+        <li><a href="#tagesablauf">Tagesablauf</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Hell-/Dunkelmodus umschalten">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.5 12H2M22 12h-2.5M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      </button>
+      <a href="#kontakt" class="btn btn-primary" style="padding:10px 20px;font-size:0.88rem;">Platz anfragen</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen" aria-expanded="false">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <a href="#ueber-mich">Über mich</a>
+    <a href="#angebot">Angebot</a>
+    <a href="#tagesablauf">Tagesablauf</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="bunting-wrap">
+      <svg class="bunting" viewBox="0 0 1200 52" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="14" x2="1200" y2="14" stroke="var(--ink-soft)" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>
+        <path d="M38,14 L82,14 L60,48 Z" fill="var(--terracotta)"/>
+        <path d="M138,14 L182,14 L160,48 Z" fill="var(--mustard)"/>
+        <path d="M238,14 L282,14 L260,48 Z" fill="var(--sage)"/>
+        <path d="M338,14 L382,14 L360,48 Z" fill="var(--sky)"/>
+        <path d="M438,14 L482,14 L460,48 Z" fill="var(--blush)"/>
+        <path d="M538,14 L582,14 L560,48 Z" fill="var(--lavender)"/>
+        <path d="M638,14 L682,14 L660,48 Z" fill="var(--terracotta)"/>
+        <path d="M738,14 L782,14 L760,48 Z" fill="var(--mustard)"/>
+        <path d="M838,14 L882,14 L860,48 Z" fill="var(--sage)"/>
+        <path d="M938,14 L982,14 L960,48 Z" fill="var(--sky)"/>
+        <path d="M1038,14 L1082,14 L1060,48 Z" fill="var(--blush)"/>
+        <path d="M1138,14 L1182,14 L1160,48 Z" fill="var(--lavender)"/>
+      </svg>
+    </div>
+    <div class="wrap">
+      <div>
+        <span class="badge-tag"><span class="dot"></span>Aktuell noch Plätze frei ab Januar</span>
+        <h1>Ein zweites Zuhause,<br>in dem <em>gesungen</em> und probiert wird</h1>
+        <p class="lead">Ich bin Imke, 60 Jahre, seit vielen Jahren Tagesmutter in Uninähe. Bei mir wird gekocht, gesungen und jede Woche der Wochenmarkt entdeckt – mit ganz viel Geduld und Herz.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn-primary">Kennenlerntermin vereinbaren</a>
+          <a href="#ueber-mich" class="btn btn-ghost">Mehr über Imke</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="portrait-frame">
+          <div class="portrait-ring"></div>
+          <div class="portrait-circle">
+            <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="var(--mustard)"/>
+              <circle cx="100" cy="82" r="40" fill="var(--card)"/>
+              <path d="M40 196c4-46 30-72 60-72s56 26 60 72z" fill="var(--card)"/>
+              <path d="M63 66c0-22 17-38 37-38s37 16 37 38c0 4-1 8-2 12-10-6-24-10-35-10s-25 4-35 10c-1-4-2-8-2-12z" fill="var(--terracotta)"/>
+            </svg>
+          </div>
+          <div class="stamp s1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></div>
+          <div class="stamp s2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 4 6 4 9a4 4 0 1 1-8 0c0-3 1-6 4-9z"/><path d="M12 15v7"/></svg></div>
+          <div class="stamp s3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1.5 11a2 2 0 0 1-2 2H7.5a2 2 0 0 1-2-2L4 8z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+        </div>
+        <p class="placeholder-note">Platzhalter-Illustration – hier kann später ein echtes Foto rein</p>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0 20 Q 50 0 100 20 T 200 20 T 300 20 T 400 20 T 500 20 T 600 20 T 700 20 T 800 20 T 900 20 T 1000 20 T 1100 20 T 1200 20 V40 H0 Z" fill="currentColor"/></svg>
+
+  <!-- Ueber mich -->
+  <section class="ueber" id="ueber-mich">
+    <div class="wrap">
+      <div>
+        <div class="avatar-big">
+          <svg viewBox="0 0 200 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="220" fill="var(--mustard)"/>
+            <circle cx="100" cy="90" r="44" fill="var(--card)"/>
+            <path d="M30 220c4-52 34-80 70-80s66 28 70 80z" fill="var(--card)"/>
+            <path d="M60 72c0-24 18-42 40-42s40 18 40 42c0 5-1 9-2 13-11-7-26-11-38-11s-27 4-38 11c-1-4-2-8-2-13z" fill="var(--terracotta)"/>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Über mich</span>
+        <blockquote>„Bei mir darf geknetet, gekostet und laut gesungen werden.“</blockquote>
+        <p>Ich bin Imke, 60 Jahre alt, und Tagesmutter aus Leidenschaft. In meiner Betreuung – nur wenige Gehminuten von der Universität entfernt – begleite ich eine kleine Gruppe von Kindern durch ihren Alltag: mit viel Geduld, Liedern für jede Gelegenheit und einer Küche, in der immer etwas Vegetarisches vor sich hin köchelt.</p>
+        <p>Mir ist wichtig, dass Kinder die Welt mit allen Sinnen entdecken – deshalb ziehen wir einmal in der Woche gemeinsam los und stöbern über den Wochenmarkt: riechen, anfassen, probieren, staunen.</p>
+        <div class="facts">
+          <div class="fact"><span class="num">60</span><span class="label">Jahre Lebens- &amp; Betreuungserfahrung</span></div>
+          <div class="fact"><span class="num">1×</span><span class="label">Wochenmarkt pro Woche</span></div>
+          <div class="fact"><span class="num">100%</span><span class="label">vegetarische Küche</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Angebot -->
+  <section id="angebot">
+    <div class="wrap">
+      <div class="angebot-head">
+        <span class="eyebrow">Was die Betreuung ausmacht</span>
+        <h2>Kleine Gewohnheiten, große Wirkung</h2>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></div>
+          <h3>Singen &amp; Musik</h3>
+          <p>Jeder Tag beginnt mit einem Morgenlied – und endet meistens auch mit einem.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 4 6 4 9a4 4 0 1 1-8 0c0-3 1-6 4-9z"/><path d="M12 15v7"/></svg></div>
+          <h3>Vegetarische Küche</h3>
+          <p>Frisch gekocht, mit Gemüse vom Markt – für Kinder, die alles einmal probieren dürfen.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/></svg></div>
+          <h3>Nähe zur Uni</h3>
+          <p>Zentral gelegen und gut erreichbar – praktisch für Eltern mit kurzen Wegen.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1.5 11a2 2 0 0 1-2 2H7.5a2 2 0 0 1-2-2L4 8z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+          <h3>Wochenmarkt-Ausflug</h3>
+          <p>Einmal wöchentlich geht's gemeinsam los: einkaufen, entdecken, staunen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tagesablauf -->
+  <section class="tag" id="tagesablauf">
+    <div class="wrap">
+      <div class="tag-head">
+        <span class="eyebrow">So sieht ein Tag aus</span>
+        <h2>Ein Tag bei Imke</h2>
+      </div>
+      <div class="timeline">
+        <div class="t-row">
+          <div class="time">8:00</div>
+          <div class="what"><strong>Ankommen &amp; Ankuscheln</strong><span>In Ruhe ankommen, kurz erzählen, wie die Nacht war.</span></div>
+        </div>
+        <div class="t-row">
+          <div class="time">8:30</div>
+          <div class="what"><strong>Morgenkreis mit Liedern</strong><span>Begrüßungslied, Wetter schauen, Tag besprechen.</span></div>
+        </div>
+        <div class="t-row">
+          <div class="time">9:30</div>
+          <div class="what"><strong>Spiel- &amp; Entdeckungszeit</strong><span>Drinnen basteln, matschen, bauen – oder raus in den Garten.</span></div>
+        </div>
+        <div class="t-row">
+          <div class="time">12:00</div>
+          <div class="what"><strong>Gemeinsames Mittagessen</strong><span>Frisch &amp; vegetarisch gekocht, oft mit Zutaten vom Markt.</span></div>
+        </div>
+        <div class="t-row">
+          <div class="time">13:00</div>
+          <div class="what"><strong>Ruhezeit</strong><span>Schlafen oder ruhig spielen – je nach Bedürfnis.</span></div>
+        </div>
+        <div class="t-row">
+          <div class="time">Donnerstags</div>
+          <div class="what"><strong>Ausflug zum Wochenmarkt</strong><span>Gemeinsam einkaufen, riechen, probieren.</span></div>
+        </div>
+        <div class="t-row">
+          <div class="time">bis 16:00</div>
+          <div class="what"><strong>Freispiel &amp; Abholen</strong><span>Zeit zum Ausklingen, bis die Eltern kommen.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section class="kontakt" id="kontakt">
+    <div class="wrap kontakt-grid">
+      <div>
+        <span class="eyebrow">Jetzt anmelden</span>
+        <h2>Wir haben aktuell noch freie Plätze</h2>
+        <p class="lead">Sie möchten Imke und ihre Betreuung kennenlernen? Melden Sie sich gerne unverbindlich – am liebsten bei einem gemeinsamen Kaffee.</p>
+        <div class="hero-actions">
+          <a href="mailto:info@tagesmutter-imke.de" class="btn btn-primary">E-Mail schreiben</a>
+          <a href="tel:+491234567890" class="btn btn-ghost">Anrufen</a>
+        </div>
+      </div>
+      <ul class="kdetails">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/></svg>
+          <div><span class="k-label">Adresse</span><br><span class="k-value">Musterstraße 12, [PLZ] [Stadt] – Nähe Universität</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2z"/></svg>
+          <div><span class="k-label">Telefon</span><br><span class="k-value">0123 456 789 0</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <div><span class="k-label">E-Mail</span><br><span class="k-value">info@tagesmutter-imke.de</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><span class="k-label">Betreuungszeiten</span><br><span class="k-value">Mo–Fr, 8:00–16:00 Uhr</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Tagesmutter Imke · Nähe Universität</span>
+    <span>Alle Angaben ohne Gewähr – Inhalte werden laufend ergänzt</span>
+  </div>
+</footer>
+
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', function(){
+    var isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.remove('open'); });
+  });
+
+  (function(){
+    var root = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    var sunIcon = toggle.querySelector('.icon-sun');
+    var moonIcon = toggle.querySelector('.icon-moon');
+
+    function systemTheme(){
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function showIcon(theme){
+      sunIcon.hidden = theme === 'dark';
+      moonIcon.hidden = theme !== 'dark';
+    }
+    function currentTheme(){
+      return root.getAttribute('data-theme') || systemTheme();
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem('imke-theme'); } catch(e){}
+    if(saved === 'light' || saved === 'dark'){ root.setAttribute('data-theme', saved); }
+    showIcon(currentTheme());
+
+    toggle.addEventListener('click', function(){
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('imke-theme', next); } catch(e){}
+      showIcon(next);
+    });
+  })();
+</script>
+
+</body>
+</html>
