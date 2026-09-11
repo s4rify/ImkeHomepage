@@ -247,7 +247,7 @@
   .angebot-head{max-width:56ch; margin-bottom:48px;}
   .angebot-head h2{font-size:clamp(1.9rem,3vw,2.5rem); font-style:italic; margin-top:10px;}
   .cards{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:20px;
   }
   @media (max-width:900px){ .cards{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .cards{grid-template-columns:1fr;} }
@@ -262,6 +262,7 @@
   .card:nth-child(2) .icon{background:color-mix(in srgb, var(--terracotta) 18%, transparent); color:var(--terracotta);}
   .card:nth-child(3) .icon{background:color-mix(in srgb, var(--mustard) 22%, transparent); color:var(--mustard);}
   .card:nth-child(4) .icon{background:color-mix(in srgb, var(--sky) 22%, transparent); color:var(--sky);}
+  .card:nth-child(5) .icon{background:color-mix(in srgb, var(--lavender) 22%, transparent); color:var(--lavender);}
   .card .icon svg{width:26px;height:26px;}
   .card h3{font-size:1.1rem; font-style:italic; margin-bottom:8px;}
   .card p{font-size:0.92rem; color:var(--ink-soft); margin:0;}
@@ -389,9 +390,9 @@
     </div>
     <div class="wrap">
       <div>
-        <span class="badge-tag"><span class="dot"></span>Aktuell noch Plätze frei ab Januar</span>
+        <span class="badge-tag"><span class="dot"></span>1 Platz frei – ab sofort</span>
         <h1>Ein zweites Zuhause,<br>in dem <em>gesungen</em> und probiert wird</h1>
-        <p class="lead">Ich bin Imke, 60 Jahre, seit vielen Jahren Tagesmutter in Uninähe. Bei mir wird gekocht, gesungen und jede Woche der Wochenmarkt entdeckt – mit ganz viel Geduld und Herz.</p>
+        <p class="lead">Ich bin Imke, 64 Jahre, seit vielen Jahren Tagesmutter in Uninähe. Bei mir wird gekocht, gesungen und jede Woche der Wochenmarkt entdeckt – mit ganz viel Geduld und Herz.</p>
         <div class="hero-actions">
           <a href="#kontakt" class="btn btn-primary">Kennenlerntermin vereinbaren</a>
           <a href="#ueber-mich" class="btn btn-ghost">Mehr über Imke</a>
@@ -434,11 +435,11 @@
       </div>
       <div>
         <span class="eyebrow">Über mich</span>
-        <blockquote>„Bei mir darf geknetet, gekostet und laut gesungen werden.“</blockquote>
-        <p>Ich bin Imke, 60 Jahre alt, und Tagesmutter aus Leidenschaft. In meiner Betreuung – nur wenige Gehminuten von der Universität entfernt – begleite ich eine kleine Gruppe von Kindern durch ihren Alltag: mit viel Geduld, Liedern für jede Gelegenheit und einer Küche, in der immer etwas Vegetarisches vor sich hin köchelt.</p>
+        <blockquote>„Bei mir darf probiert, gesungen und entdeckt werden.“</blockquote>
+        <p>Ich bin Imke, 64 Jahre alt, und Tagesmutter aus Leidenschaft. In meiner Betreuung – nur wenige Gehminuten von der Universität entfernt – begleite ich eine kleine Gruppe von Kindern durch ihren Alltag: mit viel Geduld, Liedern für jede Gelegenheit und einer Küche, in der immer etwas Vegetarisches vor sich hin köchelt.</p>
         <p>Mir ist wichtig, dass Kinder die Welt mit allen Sinnen entdecken – deshalb ziehen wir einmal in der Woche gemeinsam los und stöbern über den Wochenmarkt: riechen, anfassen, probieren, staunen.</p>
         <div class="facts">
-          <div class="fact"><span class="num">60</span><span class="label">Jahre Lebens- &amp; Betreuungserfahrung</span></div>
+          <div class="fact"><span class="num">64</span><span class="label">Jahre Lebens- &amp; Betreuungserfahrung</span></div>
           <div class="fact"><span class="num">1×</span><span class="label">Wochenmarkt pro Woche</span></div>
           <div class="fact"><span class="num">100%</span><span class="label">vegetarische Küche</span></div>
         </div>
@@ -474,6 +475,11 @@
           <h3>Wochenmarkt-Ausflug</h3>
           <p>Einmal wöchentlich geht's gemeinsam los: einkaufen, entdecken, staunen.</p>
         </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Flexible Zeiten</h3>
+          <p>Betreuung meist bis 13:30–14 Uhr – individuelle Absprachen sind jederzeit möglich.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -484,6 +490,7 @@
       <div class="tag-head">
         <span class="eyebrow">So sieht ein Tag aus</span>
         <h2>Ein Tag bei Imke</h2>
+        <p style="color:var(--ink-soft); max-width:56ch; margin-top:14px;">Die Zeiten sind ein Richtwert – Imke geht gerne auf individuelle Absprachen ein.</p>
       </div>
       <div class="timeline">
         <div class="t-row">
@@ -495,24 +502,24 @@
           <div class="what"><strong>Morgenkreis mit Liedern</strong><span>Begrüßungslied, Wetter schauen, Tag besprechen.</span></div>
         </div>
         <div class="t-row">
+          <div class="time">9:00</div>
+          <div class="what"><strong>Frühstück</strong><span>Gemeinsam am Tisch, mit frischem Obst und Brot.</span></div>
+        </div>
+        <div class="t-row">
           <div class="time">9:30</div>
-          <div class="what"><strong>Spiel- &amp; Entdeckungszeit</strong><span>Drinnen basteln, matschen, bauen – oder raus in den Garten.</span></div>
+          <div class="what"><strong>Rausgehen &amp; Aktivität</strong><span>Draußen spielen und entdecken – oder drinnen basteln, je nach Wetter.</span></div>
         </div>
         <div class="t-row">
           <div class="time">12:00</div>
-          <div class="what"><strong>Gemeinsames Mittagessen</strong><span>Frisch &amp; vegetarisch gekocht, oft mit Zutaten vom Markt.</span></div>
+          <div class="what"><strong>Mittagessen</strong><span>Frisch &amp; vegetarisch von Imke selbst gekocht.</span></div>
         </div>
         <div class="t-row">
           <div class="time">13:00</div>
-          <div class="what"><strong>Ruhezeit</strong><span>Schlafen oder ruhig spielen – je nach Bedürfnis.</span></div>
+          <div class="what"><strong>Nochmal raus</strong><span>Frische Luft zum Ausklingen des Tages.</span></div>
         </div>
         <div class="t-row">
-          <div class="time">Donnerstags</div>
-          <div class="what"><strong>Ausflug zum Wochenmarkt</strong><span>Gemeinsam einkaufen, riechen, probieren.</span></div>
-        </div>
-        <div class="t-row">
-          <div class="time">bis 16:00</div>
-          <div class="what"><strong>Freispiel &amp; Abholen</strong><span>Zeit zum Ausklingen, bis die Eltern kommen.</span></div>
+          <div class="time">13:30–14:00</div>
+          <div class="what"><strong>Abholen</strong><span>Individuell flexibel nach Absprache.</span></div>
         </div>
       </div>
     </div>
@@ -523,7 +530,7 @@
     <div class="wrap kontakt-grid">
       <div>
         <span class="eyebrow">Jetzt anmelden</span>
-        <h2>Wir haben aktuell noch freie Plätze</h2>
+        <h2>Wir haben ab sofort einen Platz frei</h2>
         <p class="lead">Sie möchten Imke und ihre Betreuung kennenlernen? Melden Sie sich gerne unverbindlich – am liebsten bei einem gemeinsamen Kaffee.</p>
         <div class="hero-actions">
           <a href="mailto:info@tagesmutter-imke.de" class="btn btn-primary">E-Mail schreiben</a>
@@ -545,7 +552,7 @@
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          <div><span class="k-label">Betreuungszeiten</span><br><span class="k-value">Mo–Fr, 8:00–16:00 Uhr</span></div>
+          <div><span class="k-label">Betreuungszeiten</span><br><span class="k-value">Mo–Fr, 8:00–13:30 Uhr (flexibel nach Absprache)</span></div>
         </li>
       </ul>
     </div>
