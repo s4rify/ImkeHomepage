@@ -1,0 +1,6 @@
+Imke Homepage
+
+	
+- Hosting
+	- wir kaufen eine Domain (zb Tagesmutter-Imke.de), die kostet ein paar Euro im Jahr
+	- hosten kann dann bei Github pages passieren (umsonst)
